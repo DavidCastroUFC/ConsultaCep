@@ -14,8 +14,6 @@ ConsultaCep
 </p>
   
 <!-- Nav Menu -->
-nbsp;
-
 <img  width="100%"  src="https://i.imgur.com/ttZ505d.png">
 <img  width="100%"  src="https://i.imgur.com/w2i3ikQ.png">
 </div>
