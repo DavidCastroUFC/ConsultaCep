@@ -18,9 +18,10 @@ function App() {
   };
 
   const onSearch = async (value)=>{
-   const res =  await api.get(`${value}/json/`); 
+   const res =  await api.get(`${value}/json/`).then(()=>{
+     console.log('bom')
+   }).catch(()=>{console.log('ruim')}); 
    setData(res.data);
-   console.log(res.data)
    showModal();
   }
   return (
