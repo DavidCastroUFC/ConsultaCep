@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import api from './services';
 import './App.css';
 import 'antd/dist/antd.css';
-import { Input,Space,Typography,Modal } from 'antd';
+import { Input,Space,Typography,Modal,message } from 'antd';
 const { Title } = Typography;
 const { Search } = Input;
 
@@ -16,14 +16,16 @@ function App() {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
+  const warning = () => {
+    message.warning('CEP não encontrado');
+  };
   const onSearch = async (value)=>{
-   const res =  await api.get(`${value}/json/`).then(()=>{
-     console.log('bom')
-   }).catch(()=>{console.log('ruim')}); 
-   setData(res.data);
-   showModal();
+    await api.get(`${value}/json/`).then((res)=>{
+     setData(res.data);
+     showModal();
+   }).catch(()=>{warning()}); 
   }
+
   return (
     <div className="App">
       <Space style={ window.innerWidth>450?{position:'absolute',left:'60%',top:'45%',display:'flex', justifyContent:'center',alignItems:'center'}:{position:'absolute',left:'5%',top:'26%',display:'flex', justifyContent:'center',alignItems:'center'}} direction="vertical">
