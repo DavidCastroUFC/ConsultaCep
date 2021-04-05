@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import axios from 'axios';
+import api from './services';
 import './App.css';
 import 'antd/dist/antd.css';
 import { Input,Space,Typography,Modal } from 'antd';
@@ -18,7 +18,7 @@ function App() {
   };
 
   const onSearch = async (value)=>{
-   const res =  await axios.get(`https:\\viacep.com.br/ws/${value}/json/`); 
+   const res =  await api.get(`${value}/json/`); 
    setData(res.data);
    console.log(res.data)
    showModal();
