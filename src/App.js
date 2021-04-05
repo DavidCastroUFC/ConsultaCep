@@ -20,7 +20,6 @@ function App() {
   const onSearch = async (value)=>{
    const res =  await api.get(`${value}/json/`); 
    setData(res.data);
-   console.log(res.data)
    showModal();
   }
   return (
